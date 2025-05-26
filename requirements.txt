@@ -1,0 +1,27 @@
+# Embeddings & Retrieval
+sentence-transformers
+faiss-cpu
+
+# Web Scraping
+beautifulsoup4
+lxml
+
+# LLM Integration via Ollama
+requests
+
+# Text Preprocessing
+nltk
+tqdm
+
+# Optional: API server
+flask
+
+# (Optional) config and logging
+python-dotenv
+
+# (Optional) For UI Chat App
+streamlit
+
+# Optional: PDF processing
+pymupdf
+
