@@ -17,6 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Download NLTK tokenizer
 RUN python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab')"
 
+ENV PYTHONPATH=/app
+
 # Expose Streamlit default port
 EXPOSE 8501
 

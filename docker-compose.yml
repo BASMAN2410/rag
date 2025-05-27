@@ -8,7 +8,7 @@ services:
       - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama
-    entrypoint: sh -c 'ollama serve & sleep 2 && ollama pull llama3 && ollama pull mistral && ollama pull deepseek-coder && wait'
+    entrypoint: sh -c 'ollama serve & sleep 2 && ollama pull llama3 && wait'
     logging:
       driver: json-file
       options:

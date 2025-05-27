@@ -5,7 +5,7 @@ from app.pipeline.rag_chain import RAGPipeline
 rag = RAGPipeline()
 
 st.set_page_config(page_title="Mortgage RAG Chat", layout="wide")
-st.title("💬 Freddie Mac & Fannie Mae RAG Assistant")
+st.title("💬RAG Assistant")
 
 # Session state to keep chat history
 if "history" not in st.session_state:
