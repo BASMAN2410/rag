@@ -2,9 +2,11 @@ from app.generator.llm_client import generate_response
 
 class RAGPipeline:
     def __init__(self):
+       
         from app.retriever.vector_store import VectorStore
         self.vs = VectorStore()
         self.vs.load()
+        print(f"__init__: RAGPipeline initialized")
 
     def query(self, question: str, top_k: int = 3):
         results = self.vs.search(question, k=top_k)
@@ -16,5 +18,5 @@ class RAGPipeline:
             f"Context:\n{context}\n\n"
             f"Question: {question}\nAnswer:"
         )
-
+        print(f"query: {prompt}")
         return generate_response(prompt)
