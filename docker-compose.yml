@@ -11,7 +11,6 @@ services:
     entrypoint: sh -c 'ollama serve & sleep 2 && ollama pull llama3 && wait'
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
-    runtime: nvidia
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:11434"]
       interval: 10s
