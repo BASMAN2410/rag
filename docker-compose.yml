@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   ollama:
@@ -9,11 +9,14 @@ services:
     volumes:
       - ollama_models:/root/.ollama
     entrypoint: sh -c 'ollama serve & sleep 2 && ollama pull llama3 && wait'
-    logging:
-      driver: json-file
-      options:
-        max-size: "10m"
-        max-file: "3"
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
     restart: unless-stopped
 
   rag-app:
@@ -26,7 +29,8 @@ services:
     environment:
       - OLLAMA_API=http://ollama:11434
     depends_on:
-      - ollama
+      ollama:
+        condition: service_healthy
     restart: unless-stopped
 
 volumes:
