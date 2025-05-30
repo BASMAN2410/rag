@@ -10,6 +10,8 @@ WORKDIR /app
 
 # Copy source code
 COPY . .
+COPY app/ui ui
+COPY requirements.txt .
 
 # Install Python packages
 RUN pip install --no-cache-dir -r requirements.txt
@@ -23,4 +25,4 @@ ENV PYTHONPATH=/app
 EXPOSE 8501
 
 # Run the app
-CMD ["streamlit", "run", "app/ui/chat_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "ui/chat_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
